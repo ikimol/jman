@@ -29,7 +29,7 @@ option(JMAN_BUILD_DOCS "Enable to build the documentation" OFF)
 # dependencies
 # ------------------------------------------------------------------------------
 
-find_package(shard REQUIRED algorithm concurrency)
+add_subdirectory(third_party)
 
 # ------------------------------------------------------------------------------
 # create targets
@@ -44,7 +44,10 @@ target_include_directories(${JMAN_LIB_NAME} INTERFACE
                            $<INSTALL_INTERFACE:include>
                            )
 
-target_link_libraries(${JMAN_LIB_NAME} INTERFACE shard::shard)
+target_link_libraries(${JMAN_LIB_NAME} INTERFACE
+                      shard::algorithm
+                      shard::concurrency
+                      )
 
 # add examples
 
